@@ -19,7 +19,7 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 # Load Dataset
-df = pd.read_csv("Reviews_cleaned")
+df = pd.read_csv("Reviews_cleaned.csv")
 
 print(df.head())
 
@@ -44,13 +44,13 @@ def preprocess(text):
     return " ".join(words)
 
 # Apply preprocessing
-df['cleaned_review'] = df['Text'].apply(preprocess)
+df['cleaned_review'] = df['Sentiment'].apply(preprocess)
 
-print(df[['Text', 'cleaned_review']].head())
+print(df[['Sentiment', 'cleaned_review']].head())
 
 # Features and Labels
 X = df['cleaned_review']
-y = df['Score']
+y = df['Sentiment']
 
 # TF-IDF Vectorization
 tfidf = TfidfVectorizer(max_features=5000)
