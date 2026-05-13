@@ -84,7 +84,13 @@ print(classification_report(y_test, y_pred))
 # Save TF-IDF Vectorizer
 with open("tfidf_vectorizer.pkl", "wb") as f:
     pickle.dump(tfidf, f)
-
+# Save selector object
+selector = {
+    "features": "TF-IDF",
+    "max_features": 5000
+}
+with open("selector.pkl", "wb") as f:
+    pickle.dump(selector, f)
 # Save Model
 with open("random_forest_model.pkl", "wb") as f:
     pickle.dump(model, f)
